@@ -1,25 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment, useState } from 'react';
+import Header from './Components/Header';
+import Footer from './Components/Footer';
+import Error from './Components/Error';
+import Formulario from './Components/Formulario';
 
 function App() {
+
+  const [pedidos, guardarPedidos] = useState([]);
+  const nombre = "Jonathan"
+  const crearPedido = pedido => {
+    guardarPedidos([...pedidos, pedido]);
+  }
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+        <Header
+          nombre= {nombre}
+        />
+        <Formulario 
+          crearPedido = {crearPedido}
+        />
+    </Fragment>
   );
 }
 
